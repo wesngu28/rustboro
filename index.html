@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js"></script>
+  <title>Pokedex</title>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>Pokemon Generation</h1>
+      <p>
+        Welcome to this page. Clicking the button will generate six Pokemon and
+        display them in a slideshow. Click the arrows to display the next or
+        back button.
+      </p>
+      <button id='start-btn'>Display Six Pokemon</button>
+      <p id="dex">Select Dex Range:</p>
+      <p>
+        <label><input type="radio" name="range" value="random" checked> National</label>
+        <label><input type="radio" name="range" value="kanto"> Kanto</label>
+        <label><input type="radio" name="range" value="johto"> Johto</label>
+        <label><input type="radio" name="range" value="hoenn"> Hoenn</label>
+        <label><input type="radio" name="range" value="sinnoh"> Sinnoh</label>
+        <label><input type="radio" name="range" value="unova"> Unova</label>
+        <label><input type="radio" name="range" value="kalos"> Kalos</label>
+        <label><input type="radio" name="range" value="alola"> Alola</label>
+        <label><input type="radio" name="range" value="galar"> Galar</label>
+      </p>
+    </header>
+    <section id="pokemon-table">
+    </section>
+    <section id="response"></section>
+    <section class="buttons">
+      <a class="back">&#8592;</a>
+      <a class="next">&#8594;</a>
+    </section>
+    <section id="personal">
+      <button id="other-btn">My Personal Six Favorite Pokemon</button>
+      <p class="hidden">
+        These are my personal six favorite Pokemon. The last game I played was
+        X so no Alola or Galar pokemon.
+      </p>
+      <section id="personalpkmn">
+        <figure class="hidden"></figure>
+        <figure class="hidden"></figure>
+        <figure class="hidden"></figure>
+        <figure class="hidden"></figure>
+        <figure class="hidden"></figure>
+        <figure class="hidden"></figure>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>
