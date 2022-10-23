@@ -1,0 +1,40 @@
+<script lang="ts">
+	import Header from '../components/Header.svelte';
+	import Pokedex from '../components/Pokedex.svelte';
+	import Footer from '../components/Footer.svelte';
+	import { pokemonList, showAbout } from '../stores/stores';
+	import type { DisplayPokemon } from '../models/DisplayPokemon';
+	import About from '../components/About.svelte';
+
+	let pokedex: Array<DisplayPokemon>;
+	let show: boolean;
+
+	pokemonList.subscribe((value: Array<DisplayPokemon>) => {
+		pokedex = value;
+	});
+	showAbout.subscribe((value: boolean) => {
+		show = value;
+	});
+</script>
+
+<div class="wrapper">
+	<Header pokeBallWork={true} />
+	<Pokedex pokemon={pokedex} />
+	<About {show} />
+	<Footer />
+</div>
+
+<style scoped>
+	.wrapper {
+		min-height: 97.5vh;
+		position: relative;
+		padding-bottom: 2rem;
+	}
+	:global(body) {
+		padding: 0;
+		margin: 0;
+		background-color: aliceblue;
+		font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+			Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	}
+</style>

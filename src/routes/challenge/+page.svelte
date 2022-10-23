@@ -1,0 +1,1 @@
+<p>Pick the pokemon with the higher base stat total</p>
