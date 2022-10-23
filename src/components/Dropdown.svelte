@@ -4,13 +4,13 @@
     import { pokemonList, showAbout } from '../stores/stores'
     export let show: boolean
     let search = ''
-    let regions = ['National', 'Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola', 'Galar']
+    let regions = ['National', 'Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola', 'Galar', 'Forms']
     
 
 	const handleKeydown = async (event: KeyboardEvent) => {
 		if (search) {
 			if (event.key === 'Enter') {
-				const pokemon = [await getPokemon(search)]
+				const pokemon = await getPokemon(search)
                 pokemonList.update((str) => pokemon)
                 showAbout.update((show) => false)
 			}
@@ -70,11 +70,24 @@
         margin-top: 0;
         display: flex;
         list-style: none;
+        flex-wrap: wrap;
     }
     li {
         padding: 0.5rem;
         border-radius: 2px;
         background-color: salmon;
         margin: 0.5rem;
+    }
+    @media (max-width: 820px) {
+        div {
+            width: 100vw;
+        }
+        ul {
+            flex-wrap: wrap;
+        }
+        li {
+            padding: 0rem;
+            margin: 0.2rem;
+        }
     }
 </style>

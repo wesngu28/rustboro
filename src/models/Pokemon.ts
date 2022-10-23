@@ -1,7 +1,7 @@
 export interface Pokemon {
     abilities: Ability2[];
     base_experience: number;
-    forms: Ability[];
+    forms: nameUrl[];
     game_indices: Gameindex[];
     height: number;
     held_items: Helditem[];
@@ -12,22 +12,22 @@ export interface Pokemon {
     name: string;
     order: number;
     past_types: any[];
-    species: Ability;
+    species: nameUrl;
     sprites: Sprites;
     stats: Stat[];
     types: Type[];
     weight: number;
   }
   
-  interface Type {
+  export interface Type {
     slot: number;
-    type: Ability;
+    type: nameUrl;
   }
   
-  interface Stat {
+  export interface Stat {
     base_stat: number;
     effort: number;
-    stat: Ability;
+    stat: nameUrl;
   }
   
   interface Sprites {
@@ -181,38 +181,38 @@ export interface Pokemon {
   }
   
   interface Move {
-    move: Ability;
+    move: nameUrl;
     version_group_details: Versiongroupdetail[];
   }
   
   interface Versiongroupdetail {
     level_learned_at: number;
-    move_learn_method: Ability;
-    version_group: Ability;
+    move_learn_method: nameUrl;
+    version_group: nameUrl;
   }
   
   interface Helditem {
-    item: Ability;
+    item: nameUrl;
     version_details: Versiondetail[];
   }
   
   interface Versiondetail {
     rarity: number;
-    version: Ability;
+    version: nameUrl;
   }
   
   interface Gameindex {
     game_index: number;
-    version: Ability;
+    version: nameUrl;
   }
   
-  interface Ability2 {
-    ability: Ability;
+  export interface Ability2 {
+    ability: nameUrl;
     is_hidden: boolean;
     slot: number;
   }
   
-  interface Ability {
+  export interface nameUrl {
     name: string;
     url: string;
   }
