@@ -10,7 +10,7 @@ export const getSixRandomPokemon = async (event: Event) => {
     if (Object.keys(gens).includes(clickedRegion)) {
         value = gens[clickedRegion]
     }
-    if (clickedRegion === 'National') value = [0, 905]
+    if (clickedRegion === 'National') value = [1, 906]
     let pokemonArray: Array<DisplayPokemon> = []
     for (let i = 0; i < 6; i++) {
         const rand = Math.floor(Math.random() * (value[1] - value[0]) + value[0]);
