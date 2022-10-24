@@ -7,7 +7,7 @@ export const getFavoritePokemon = async (favArr: Array<string>) => {
     for (let i = 0; i < favArr.length; i++) {
         const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon/' + favArr[i])
         const pokemonJson: Pokemon = await pokemon.json()
-        favList = [...favList, processPokemon(pokemonJson)]
+        favList = [...favList, await processPokemon(pokemonJson)]
     }
     return favList
 }

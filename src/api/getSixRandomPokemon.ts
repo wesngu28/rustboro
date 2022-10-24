@@ -16,7 +16,7 @@ export const getSixRandomPokemon = async (event: Event) => {
         const rand = Math.floor(Math.random() * (value[1] - value[0]) + value[0]);
         const pokemon = await fetch('https://pokeapi.co/api/v2/pokemon/' + rand)
         const pokemonJson: Pokemon = await pokemon.json()
-        pokemonArray = [...pokemonArray, processPokemon(pokemonJson)]
+        pokemonArray = [...pokemonArray, await processPokemon(pokemonJson)]
     }
     return pokemonArray
 }

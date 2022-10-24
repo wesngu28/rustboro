@@ -11,6 +11,7 @@
 		if (search) {
 			if (event.key === 'Enter') {
 				const pokemon = await getPokemon(search)
+                console.log(pokemon)
                 pokemonList.update((str) => pokemon)
                 showAbout.update((show) => false)
 			}
@@ -29,8 +30,8 @@
     <p>or choose a region for six random Pokemon</p>
     <ul>
         {#each regions as region, i}
-            <li on:click={(event) => prepareSixRandom(event)}>
-                {region}
+            <li>
+                <button on:click={(event) => prepareSixRandom(event)}>{region}</button>
             </li>  
         {/each}
     </ul>
@@ -77,6 +78,11 @@
         border-radius: 2px;
         background-color: salmon;
         margin: 0.5rem;
+    }
+
+    button {
+        border: none;
+        background-color: transparent;
     }
     @media (max-width: 820px) {
         div {

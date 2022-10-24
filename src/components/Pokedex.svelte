@@ -2,7 +2,6 @@
 	import { capitalizeAndRemove } from '../helpers/capitalizeAndRemove';
 	import type { DisplayPokemon } from '../models/DisplayPokemon';
 	export let pokemon: Array<DisplayPokemon>;
-	console.log(pokemon)
 	let idx = 0;
 	const handleKeydown = (event: KeyboardEvent) => {
 		if (pokemon.length > 1) {
@@ -41,7 +40,9 @@
 			<div class="pokemon {i === idx ? 'show' : 'hidden'}">
 				<div class="nameArt">
 					<h1>{pkmn.name}</h1>
+					<h2>{pkmn.title}</h2>
 					<img src={pkmn.art} />
+					<p>{pkmn.blurb}</p>
 				</div>
 				<div class="info">
 					<div class="spriteability">
@@ -68,14 +69,31 @@
 							</div>
 						</div>
 					</div>
-					<table class="spriteTable">
+					<table class="statTable">
 						{#each pkmn.stats as stat}
-						<tr>
-							<td><span>{capitalizeAndRemove(stat.stat.name)}</span></td>
-							<td class="long"><span style="display: inline-block; {`background-color: hsl(${100*(stat.base_stat/150)},100%,50%); width: ${100*(stat.base_stat/200)}%;`}" class="stat">{stat.base_stat}</span></td>
-						</tr>
+							<tr>
+								<td><span>{capitalizeAndRemove(stat.stat.name)}</span></td>
+								<td class="long"
+									><span
+										style="display: inline-block; {`background-color: hsl(${
+											100 * (stat.base_stat / 150)
+										},100%,50%); width: ${100 * (stat.base_stat / 200)}%;`}"
+										class="stat">{stat.base_stat}</span
+									></td
+								>
+							</tr>
 						{/each}
 					</table>
+					{#if pkmn.varieties.length > 0}
+						{#each pkmn.varieties as variety}
+							<p>{variety.name}</p>
+						{/each}
+					{/if}
+					{#if pkmn.evolution.length > 0}
+						{#each pkmn.evolution as evolution}
+							<p>{evolution}</p>
+						{/each}
+					{/if}
 				</div>
 			</div>
 		{/each}
@@ -122,7 +140,7 @@
 		flex-direction: column;
 		justify-content: center;
 	}
-	.spriteTable {
+	.statTable {
 		padding: 3rem;
 		display: table;
 		grid-template-columns: repeat(2, minmax(0, 1fr));

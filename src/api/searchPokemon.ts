@@ -5,6 +5,7 @@ import { processPokemon } from "./processPokemon"
 export const getPokemon = async (pokemon: string): Promise<DisplayPokemon[]> => {
     const searchedPokemon = await fetch('https://pokeapi.co/api/v2/pokemon/' + uncapitalize(pokemon))
     const pokemonJson = await searchedPokemon.json()
-    const pokemonArr = [processPokemon(pokemonJson)]
+    const pokemonData = await processPokemon(pokemonJson)
+    const pokemonArr = [pokemonData]
     return pokemonArr
 }
