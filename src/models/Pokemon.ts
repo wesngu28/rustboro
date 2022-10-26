@@ -78,7 +78,6 @@ export interface OtherPokemonSprites {
 }
 
 export interface OfficialArtwork {
-	/** The default depiction of this Pokémon from the front in battle */
 	front_default: string | null;
 }
 

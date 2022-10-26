@@ -3,6 +3,7 @@
 	import type { DisplayPokemon } from '../models/DisplayPokemon';
 	export let pokemon: Array<DisplayPokemon>;
 	let idx = 0;
+
 	const handleKeydown = (event: KeyboardEvent) => {
 		if (pokemon.length > 1) {
 			if (event.key === 'ArrowLeft') {
@@ -13,6 +14,7 @@
 			}
 		}
 	};
+
 	const previousPokemon = () => {
 		if (idx === 0) {
 			idx = pokemon.length - 1;
@@ -21,6 +23,7 @@
 		}
 		console.log(idx);
 	};
+	
 	const nextPokemon = () => {
 		if (idx === pokemon.length - 1) {
 			idx = 0;
@@ -116,6 +119,7 @@
 		text-decoration: none;
 		color: darkblue;
 	}
+
 	.slideshow {
 		display: flex;
 		justify-content: center;
@@ -123,21 +127,25 @@
 		padding-top: 9rem;
 		position: relative;
 	}
+
 	.type {
 		margin: 0.5rem;
 		padding: 0.25rem;
 		background-color: beige;
 		border-radius: 0.5rem;
 	}
+
 	div {
 		display: flex;
 	}
+	
 	.pokemon {
 		flex-direction: row;
 		width: 45vw;
 		background-color: ghostwhite;
 		padding: 2rem;
 	}
+
 	.nameArt {
 		flex-direction: column;
 		justify-content: center;
@@ -145,11 +153,13 @@
 		text-align: center;
 		width: 55%;
 	}
+
 	.info {
 		width: 45%;
 		flex-direction: column;
 		justify-content: center;
 	}
+
 	.statTable {
 		padding: 3rem;
 		display: table;
@@ -157,28 +167,35 @@
 		flex-direction: column;
 		width: 100%;
 	}
+
 	.long {
 		width: 65%;
 	}
+
 	.stat {
 		background-color: aqua;
 	}
+
 	.abilitydiv {
 		justify-content: center;
 		flex-direction: column;
 	}
+
 	.abilitydiv > div:first-child {
 		flex-direction: row;
 		justify-content: center;
 		text-align: left;
 	}
+
 	.abilitydiv > div:first-child > p {
 		text-align: center;
 	}
+
 	.abilitydiv > div:last-child {
 		flex-direction: row;
 		align-items: center;
 	}
+
 	.spriteability {
 		flex-direction: row;
 		justify-content: space-around;
@@ -191,17 +208,21 @@
 	.show {
 		display: flex;
 	}
+	
 	ul {
 		list-style: none;
 	}
+
 	.nameArt > img {
 		max-width: 475px;
 		object-fit: cover;
 	}
+
 	.sprite-holder {
 		width: 150px;
 		height: 150px;
 	}
+
 	.sprite {
 		max-width: 100%;
 		height: auto;

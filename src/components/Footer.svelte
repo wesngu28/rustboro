@@ -2,9 +2,11 @@
 	import { getPokemon } from "../api/searchPokemon";
     import { pokemonList, showAbout } from '../stores/stores'
 	let unshow: boolean;
+	
 	showAbout.subscribe((value: boolean) => {
 		unshow = value;
 	});
+
     async function displayFavorite() {
         if(unshow) {
             pokemonList.update((list) => [])
@@ -32,6 +34,7 @@
 		bottom: 0;
 		background-color: goldenrod;
 	}
+
 	button {
         border: none;
 		background-color: tomato;

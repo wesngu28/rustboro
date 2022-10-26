@@ -17,6 +17,7 @@
 			}
 		}
 	};
+
     async function prepareSixRandom(event: Event) {
         const pokemon = await getSixRandomPokemon(event)
         pokemonList.update((list) => pokemon)
@@ -25,6 +26,7 @@
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
+
 <div class="{show ? 'visible' : 'hidden'}">
     <input placeholder="Search a Pokemon" bind:value={search}>
     <p>or choose a region for six random Pokemon</p>
@@ -73,6 +75,7 @@
         list-style: none;
         flex-wrap: wrap;
     }
+
     li {
         padding: 0.5rem;
         border-radius: 2px;
@@ -84,6 +87,7 @@
         border: none;
         background-color: transparent;
     }
+
     @media (max-width: 820px) {
         div {
             width: 100vw;
@@ -96,4 +100,5 @@
             margin: 0.2rem;
         }
     }
+
 </style>

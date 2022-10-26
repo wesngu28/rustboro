@@ -22,8 +22,10 @@
         padding: 1rem;
         text-align: center;
     }
+
     p {
-        width: 50%;
+        width
+        : 50%;
     }
     @media (max-width: 960px) {
         p {
