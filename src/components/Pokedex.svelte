@@ -64,9 +64,9 @@
 										<li>
 											<span
 												><a
-													href={`https://www.smogon.com/dex/ss/abilities/${ability.name
-														.replace(' ', '-')
-														.toLowerCase()}`}>{capitalizeAndRemove(ability.name)}</a
+													href={`https://www.smogon.com/dex/ss/abilities/${ability
+														.replace(' ', '-').replace('(H)', '')
+														.toLowerCase()}`}>{capitalizeAndRemove(ability)}</a
 												></span
 											>
 										</li>

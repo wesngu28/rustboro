@@ -15,19 +15,11 @@ model Display {
   name      String
   art       String
   sprite    String
-  abilities Ability[]
+  abilities String[]
   stats     String[]
   types     String[]
   title     String
   blurb     String
   varieties String[]
   evolution String[]
-}
-
-model Ability {
-  id        Int     @id @default(autoincrement())
-  pokemon   Display @relation(fields: [pokemonId], references: [id])
-  pokemonId Int
-  name      String
-  hidden    Boolean
 }

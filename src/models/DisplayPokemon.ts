@@ -1,18 +1,13 @@
 export interface DisplayPokemon {
-    id: number
-    name: string
-    art: string,
-    sprite: string,
-    abilities: Ability[],
+    id: number,
+    name: string,
+    art: string | null | undefined,
+    sprite: string | null | undefined,
+    abilities: string[],
     stats: string[],
     types: string[],
     title: string,
     blurb: string,
     varieties: string[]
     evolution: string[]
-}
-
-export interface Ability {
-    name: string
-    hidden: boolean
 }

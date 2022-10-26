@@ -1,61 +1,41 @@
 import type { Pokemon } from "../models/Pokemon";
 import { capitalize } from "../helpers/capitalize";
-import type { Ability, DisplayPokemon } from "../models/DisplayPokemon";
-import type { Species, Variety } from "../models/PokemonSpecies";
-import type { Evolution, Evolvesto } from "../models/EvolutionChain";
+import type { DisplayPokemon } from "../models/DisplayPokemon";
+import type { PokemonSpecies } from "../models/PokemonSpecies";
+import type { ChainLink, EvolutionChain } from "../models/EvolutionChain";
 import { capitalizeAndRemove } from "../helpers/capitalizeAndRemove";
 
-export const processPokemon = async (response: Pokemon) => {
-    let preferredArt: string
-    let sprite: string
-    if(response.sprites.other['official-artwork'].front_default) {
-        preferredArt = response.sprites.other['official-artwork'].front_default
-        if (response.sprites.versions["generation-v"]["black-white"].animated.front_default) {
-            sprite = response.sprites.versions["generation-v"]["black-white"].animated.front_default
-        } else {
-            sprite = response.sprites.front_default
-        }
-    } else if (response.sprites.versions["generation-v"]["black-white"].animated.front_default) {
-        preferredArt = response.sprites.versions["generation-v"]["black-white"].animated.front_default
-        sprite = response.sprites.versions["generation-v"]["black-white"].animated.front_default
-    } else {
-        preferredArt = response.sprites.front_default
-        sprite = response.sprites.front_default
+export const processPokemon = async (response: Pokemon, species: PokemonSpecies, evolutionChain: EvolutionChain) => {
+    const sprite = response.sprites.front_default
+    let preferredArt = response.sprites.other?.["official-artwork"].front_default
+    if(!preferredArt) {
+        if (response.sprites.front_default) preferredArt = response.sprites.front_default
     }
-    const pokemonPkdex = await fetch(response.species.url)
-    const { evolution_chain, genera, flavor_text_entries, varieties}: Species = await pokemonPkdex.json()
-    const pokemonEvolution = await fetch(evolution_chain.url)
-    const { chain }: Evolution = await pokemonEvolution.json()
-    const findEnglishGenus = genera.filter(p => p.language.name === 'en')
-    const badlyPunctuatedOrCase = ['red', 'blue', 'yellow', 'gold', 'silver', 'crystal', 'ruby', 'sapphire', 'emerald', 'firered', 'leafgreen', 'diamond', 'pearl', 'platinum', 'heartgold', 'soulsilver']
-    const findEnglishFlavor=  flavor_text_entries.filter(p => p.language.name === 'en')
-    const useGoodEntry = findEnglishFlavor.filter(p => !badlyPunctuatedOrCase.includes(p.version.name))
-    const findVarieties =  varieties.filter(p => p.is_default === false)
+    const findEnglishGenus = species.genera.filter(p => p.language.name === 'en')
+    const findEnglishFlavor = species.flavor_text_entries.filter(p => p.language.name === 'en')
+    const findVarieties =  species.varieties.filter(p => p.is_default === false)
 
-    const usefulVariety = findVarieties.map((v: Variety) => {
+    const usefulVariety = findVarieties.map((v) => {
         return capitalizeAndRemove(v.pokemon.name)
     })
     let evolutions: string[] = []
-    evolutions = [...evolutions, chain.species.name]
-	const digDeeper = async (evolutionTree: Evolvesto[]) => {
+    evolutions = [...evolutions, evolutionChain.chain.species.name]
+	const digDeeper = async (evolutionTree: ChainLink[]) => {
         if(!evolutionTree[0]) return
-        console.log(evolutionTree[0].species.name)
+        if(evolutionTree.length > 1) return
 		evolutions = [...evolutions, evolutionTree[0].species.name] 
 		if (Object.keys(evolutionTree[0]).includes('evolves_to')) {
 			digDeeper(evolutionTree[0].evolves_to)
 		}
 	}
 
-    await digDeeper(chain.evolves_to)
+    await digDeeper(evolutionChain.chain.evolves_to)
     evolutions = evolutions.map((e: string) => { return capitalize(e) })
 
-    let abilities: Ability[] = []
+    let abilities: string[] = []
     response.abilities.forEach((ability) => {
-        const abilityInfo = {
-            name: ability.ability.name,
-            hidden: ability.is_hidden
-        }
-        abilities = [...abilities, abilityInfo]
+        if(ability.is_hidden) abilities = [...abilities, `${ability.ability.name} (H)`]
+        else abilities = [...abilities, ability.ability.name]
     })
 
     let types: string[] = []
@@ -76,7 +56,7 @@ export const processPokemon = async (response: Pokemon) => {
         stats: stats,
         types: types,
         title: findEnglishGenus[0].genus,
-        blurb: useGoodEntry[0].flavor_text,
+        blurb: findEnglishFlavor[0].flavor_text,
         varieties: usefulVariety,
         evolution: evolutions,
     }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getFavoritePokemon } from "../api/getFavoritePokemon";
+	import { getPokemon } from "../api/searchPokemon";
     import { pokemonList, showAbout } from '../stores/stores'
 	let unshow: boolean;
 	showAbout.subscribe((value: boolean) => {
@@ -11,7 +11,7 @@
             showAbout.update((show) => false)
         } else {
             showAbout.update((show) => true)
-            const favorites = await getFavoritePokemon(['94', '471', '382', '282', '609', '169'])
+            const favorites = await getPokemon(['94', '471', '382', '282', '609', '169'])
             pokemonList.update((list) => favorites)
         }
     }

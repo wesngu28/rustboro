@@ -1,61 +1,71 @@
-import type { Info } from "./basicInterface";
+import type { NamedAPIResource } from "./Pokemon";
 
-export interface Species {
-  base_happiness: number;
-  capture_rate: number;
-  color: Info;
-  egg_groups: Info[];
-  evolution_chain: Evolutionchain;
-  evolves_from_species: Info;
-  flavor_text_entries: Flavortextentry[];
-  form_descriptions: Formdescription[];
-  forms_switchable: boolean;
-  gender_rate: number;
-  genera: Genus[];
-  generation: Info;
-  growth_rate: Info;
-  habitat?: any;
-  has_gender_differences: boolean;
-  hatch_counter: number;
+export interface PokemonSpecies {
   id: number;
+  name: string;
+  order: number;
+  gender_rate: number;
+  capture_rate: number;
+  base_happiness: number;
   is_baby: boolean;
   is_legendary: boolean;
   is_mythical: boolean;
-  name: string;
-  names: Info[];
-  order: number;
-  pal_park_encounters: any[];
-  pokedex_numbers: Pokedexnumber[];
-  shape: Info;
-  varieties: Variety[];
-}
-
-export interface Variety {
-  is_default: boolean;
-  pokemon: Info;
-}
-
-interface Pokedexnumber {
-  entry_number: number;
-  pokedex: Info;
+  hatch_counter: number;
+  has_gender_differences: boolean;
+  forms_switchable: boolean;
+  growth_rate: NamedAPIResource;
+  pokedex_numbers: PokemonSpeciesDexEntry[];
+  egg_groups: NamedAPIResource[];
+  color: NamedAPIResource;
+  shape: NamedAPIResource;
+  evolves_from_species: NamedAPIResource;
+  evolution_chain: APIResource;
+  habitat: NamedAPIResource;
+  generation: NamedAPIResource;
+  names: Name[];
+  pal_park_encounters: PalParkEncounterArea[];
+  flavor_text_entries: FlavorText[];
+  form_descriptions: Description[];
+  genera: Genus[];
+  varieties: PokemonSpeciesVariety[];
 }
 
 export interface Genus {
   genus: string;
-  language: Info;
+  language: NamedAPIResource;
 }
 
-interface Formdescription {
-  description: string;
-  language: Info;
+export interface PokemonSpeciesDexEntry {
+  entry_number: number;
+  pokedex: NamedAPIResource;
 }
 
-interface Flavortextentry {
-  flavor_text: string;
-  language: Info;
-  version: Info;
+export interface PalParkEncounterArea {
+  base_score: number;
+  rate: number;
+  area: NamedAPIResource;
 }
 
-export interface Evolutionchain {
+export interface PokemonSpeciesVariety {
+  is_default: boolean;
+  pokemon: NamedAPIResource;
+}
+
+export interface APIResource {
   url: string;
+}
+
+export interface FlavorText {
+  flavor_text: string;
+  language: NamedAPIResource;
+}
+
+export interface Description {
+  description: string;
+  language: NamedAPIResource;
+}
+
+export interface Name {
+  name: string;
+  language: NamedAPIResource;
 }
