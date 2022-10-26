@@ -12,12 +12,10 @@ export const processPokemon = async (response: Pokemon, species: PokemonSpecies,
         if (response.sprites.front_default) preferredArt = response.sprites.front_default
     }
     const findEnglishGenus = species.genera.filter(p => p.language.name === 'en')
-    const findEnglishFlavor = species.flavor_text_entries.filter(p => p.language.name === 'en')
+    const badlyPunctuatedOrCase = ['red', 'blue', 'yellow', 'gold', 'silver', 'crystal', 'ruby', 'sapphire', 'emerald', 'firered', 'leafgreen', 'diamond', 'pearl', 'platinum', 'heartgold', 'soulsilver']
+    const findEnglishFlavor=  species.flavor_text_entries.filter(p => p.language.name === 'en' && p.version?.name && !badlyPunctuatedOrCase.includes(p.version?.name))
     const findVarieties =  species.varieties.filter(p => p.is_default === false)
-
-    const usefulVariety = findVarieties.map((v) => {
-        return capitalizeAndRemove(v.pokemon.name)
-    })
+    const usefulVariety = findVarieties.map((v) => {return capitalizeAndRemove(v.pokemon.name)})
     let evolutions: string[] = []
     evolutions = [...evolutions, evolutionChain.chain.species.name]
 	const digDeeper = async (evolutionTree: ChainLink[]) => {
@@ -28,25 +26,20 @@ export const processPokemon = async (response: Pokemon, species: PokemonSpecies,
 			digDeeper(evolutionTree[0].evolves_to)
 		}
 	}
-
     await digDeeper(evolutionChain.chain.evolves_to)
     evolutions = evolutions.map((e: string) => { return capitalize(e) })
-
     let abilities: string[] = []
     response.abilities.forEach((ability) => {
         if(ability.is_hidden) abilities = [...abilities, `${ability.ability.name} (H)`]
         else abilities = [...abilities, ability.ability.name]
     })
-
     let types: string[] = []
     response.types.forEach((type) => {
         types = [...types, type.type.name]
     })
-
     const stats: string[] = response.stats.map((stat) => {
         return `${stat.stat.name}:${stat.base_stat}`
     })
-
     const pokemon: DisplayPokemon = {
         id: response.id,
         name: capitalize(response.name),

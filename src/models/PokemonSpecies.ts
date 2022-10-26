@@ -58,6 +58,12 @@ export interface APIResource {
 export interface FlavorText {
   flavor_text: string;
   language: NamedAPIResource;
+  version?: Version
+}
+
+export interface Version {
+  name: string;
+  url: string;
 }
 
 export interface Description {
