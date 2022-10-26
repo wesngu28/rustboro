@@ -3,24 +3,14 @@
 	import Pokedex from '../components/Pokedex.svelte';
 	import Footer from '../components/Footer.svelte';
 	import { pokemonList, showAbout } from '../stores/stores';
-	import type { DisplayPokemon } from '../models/DisplayPokemon';
 	import About from '../components/About.svelte';
 
-	let pokedex: Array<DisplayPokemon>;
-	let show: boolean;
-
-	pokemonList.subscribe((value: Array<DisplayPokemon>) => {
-		pokedex = value;
-	});
-	showAbout.subscribe((value: boolean) => {
-		show = value;
-	});
 </script>
 
 <div class="wrapper">
 	<Header pokeBallWork={true} />
-	<Pokedex pokemon={pokedex} />
-	<About {show} />
+	<Pokedex pokemon={$pokemonList} />
+	<About show={$showAbout} />
 	<Footer />
 </div>
 

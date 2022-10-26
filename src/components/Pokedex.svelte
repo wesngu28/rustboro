@@ -53,7 +53,7 @@
 							<div>
 								{#each pkmn.types as typer}
 									<p>
-										<span class="type">{capitalizeAndRemove(typer.type.name)}</span>
+										<span class="type">{capitalizeAndRemove(typer)}</span>
 									</p>
 								{/each}
 							</div>
@@ -62,7 +62,13 @@
 								<ul>
 									{#each pkmn.abilities as ability}
 										<li>
-											<span>{capitalizeAndRemove(ability.ability.name)}</span>
+											<span
+												><a
+													href={`https://www.smogon.com/dex/ss/abilities/${ability.name
+														.replace(' ', '-')
+														.toLowerCase()}`}>{capitalizeAndRemove(ability.name)}</a
+												></span
+											>
 										</li>
 									{/each}
 								</ul>
@@ -72,13 +78,13 @@
 					<table class="statTable">
 						{#each pkmn.stats as stat}
 							<tr>
-								<td><span>{capitalizeAndRemove(stat.stat.name)}</span></td>
+								<td><span>{capitalizeAndRemove(stat.split(':')[0])}</span></td>
 								<td class="long"
 									><span
 										style="display: inline-block; {`background-color: hsl(${
-											100 * (stat.base_stat / 150)
-										},100%,50%); width: ${100 * (stat.base_stat / 200)}%;`}"
-										class="stat">{stat.base_stat}</span
+											100 * (Number(stat.split(':')[1]) / 150)
+										},100%,50%); width: ${100 * (Number(stat.split(':')[1]) / 200)}%;`}"
+										class="stat">{stat.split(':')[1]}</span
 									></td
 								>
 							</tr>
@@ -86,7 +92,7 @@
 					</table>
 					{#if pkmn.varieties.length > 0}
 						{#each pkmn.varieties as variety}
-							<p>{variety.name}</p>
+							<p>{variety}</p>
 						{/each}
 					{/if}
 					{#if pkmn.evolution.length > 0}
@@ -106,6 +112,10 @@
 {/if}
 
 <style scoped>
+	a {
+		text-decoration: none;
+		color: darkblue;
+	}
 	.slideshow {
 		display: flex;
 		justify-content: center;
