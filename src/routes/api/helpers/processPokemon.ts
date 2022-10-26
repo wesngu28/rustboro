@@ -1,9 +1,9 @@
-import type { Pokemon } from "../models/Pokemon";
-import { capitalize } from "../helpers/capitalize";
-import type { DisplayPokemon } from "../models/DisplayPokemon";
-import type { PokemonSpecies } from "../models/PokemonSpecies";
-import type { ChainLink, EvolutionChain } from "../models/EvolutionChain";
-import { capitalizeAndRemove } from "../helpers/capitalizeAndRemove";
+import type { Pokemon } from "../../../models/Pokemon";
+import { capitalize } from "../../../helpers/capitalize";
+import type { DisplayPokemon } from "../../../models/DisplayPokemon";
+import type { PokemonSpecies } from "../../../models/PokemonSpecies";
+import type { ChainLink, EvolutionChain } from "../../../models/EvolutionChain";
+import { capitalizeAndRemove } from "../../../helpers/capitalizeAndRemove";
 
 export const processPokemon = async (response: Pokemon, species: PokemonSpecies, evolutionChain: EvolutionChain) => {
     const sprite = response.sprites.front_default

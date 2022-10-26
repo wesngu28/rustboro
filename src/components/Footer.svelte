@@ -1,22 +1,23 @@
 <script lang="ts">
-	import { getPokemon } from "../api/searchPokemon";
-    import { pokemonList, showAbout } from '../stores/stores'
+	import { pokemonList, showAbout } from '../stores/stores';
 	let unshow: boolean;
-	
+
 	showAbout.subscribe((value: boolean) => {
 		unshow = value;
 	});
 
-    async function displayFavorite() {
-        if(unshow) {
-            pokemonList.update((list) => [])
-            showAbout.update((show) => false)
-        } else {
-            showAbout.update((show) => true)
-            const favorites = await getPokemon(['94', '471', '382', '282', '609', '169'])
-            pokemonList.update((list) => favorites)
-        }
-    }
+	async function displayFavorite() {
+		if (unshow) {
+			pokemonList.update((list) => []);
+			showAbout.update((show) => false);
+		} else {
+			showAbout.update((show) => true);
+			const response = await fetch(`/api/pokemon?pokemon=${'94,471,382,282,609,169'}`);
+			const usable = await response.text();
+			const pokemon = JSON.parse(usable);
+			pokemonList.update((list) => pokemon);
+		}
+	}
 </script>
 
 <footer>
@@ -36,7 +37,7 @@
 	}
 
 	button {
-        border: none;
+		border: none;
 		background-color: tomato;
 		color: white;
 		padding: 0.3rem;

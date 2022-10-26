@@ -1,4 +1,4 @@
-import type { DisplayPokemon } from "../models/DisplayPokemon"
+import type { DisplayPokemon } from "../../../models/DisplayPokemon"
 import { fetchPokemonData } from "./fetchPokemonData"
 
 export const getSixRandomPokemon = async (event: Event) => {
@@ -13,7 +13,7 @@ export const getSixRandomPokemon = async (event: Event) => {
     let pokemonArray: Array<DisplayPokemon> = []
     for (let i = 0; i < 6; i++) {
         const rand = Math.floor(Math.random() * (value[1] - value[0]) + value[0]);
-        const pokemonData = await fetchPokemonData(rand)
+        const pokemonData = await fetchPokemonData(String(rand))
         pokemonArray = [...pokemonArray, pokemonData]
     }
     return pokemonArray
