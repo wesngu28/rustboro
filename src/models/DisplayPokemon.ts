@@ -1,8 +1,8 @@
 export interface DisplayPokemon {
     id: number,
     name: string,
-    art: string | null | undefined,
-    sprite: string | null | undefined,
+    art: string,
+    sprite: string,
     abilities: string[],
     stats: string[],
     types: string[],

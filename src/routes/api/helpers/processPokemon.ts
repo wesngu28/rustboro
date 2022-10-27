@@ -6,10 +6,12 @@ import type { ChainLink, EvolutionChain } from "../../../models/EvolutionChain";
 import { capitalizeAndRemove } from "../../../helpers/capitalizeAndRemove";
 
 export const processPokemon = async (response: Pokemon, species: PokemonSpecies, evolutionChain: EvolutionChain) => {
-    const sprite = response.sprites.front_default
+    let sprite = response.sprites.front_default
+    if(!sprite) sprite = 'headerBall.png'
     let preferredArt = response.sprites.other?.["official-artwork"].front_default
     if(!preferredArt) {
         if (response.sprites.front_default) preferredArt = response.sprites.front_default
+        else preferredArt = 'headerBall.png'
     }
     const findEnglishGenus = species.genera.filter(p => p.language.name === 'en')
     const badlyPunctuatedOrCase = ['red', 'blue', 'yellow', 'gold', 'silver', 'crystal', 'ruby', 'sapphire', 'emerald', 'firered', 'leafgreen', 'diamond', 'pearl', 'platinum', 'heartgold', 'soulsilver']
