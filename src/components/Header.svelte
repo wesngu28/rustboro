@@ -15,7 +15,6 @@
 
 <header>
 	{#if !url.includes('challenge')}
-		<a href="/challenge"><img alt="clickable stone badge" src="stoneBadge.png" /></a>
 		<img on:click={flipBall} alt="clickable pokeball button" src="headerBall.png" />
 		<Dropdown show={pokeBallClick} />
 		<a href="/challenge"><img alt="clickable stone badge" src="stoneBadge.png" /></a>
