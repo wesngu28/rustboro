@@ -9,12 +9,12 @@ Still a work in progress, some parts may feel unresponsive or slow.
 
 Remaking this app was something that I wanted to do for a while, given that I made it when I barely knew Javascript and how the fetch api worked. I initially planned to only make a simple Smogon-like stat viewer, but thought why not just implement some form of user interactivity in the form of a stat picking game.
 
-As for the technology itself, pokemon are gathered from the app's backend CockroachDB cluster running postgresql, but not all of the Pokemon are currently inside the database, as they are incrementally added when one that isn't in it is queried for or generated. The website was made with SvelteKit using Typescript and the database queries are handled with Prisma.
+As for the technology itself, pokemon are gathered from the app's backend CockroachDB cluster (which is very similar to Postgresql), but not all of the Pokemon are currently inside the database, as they are incrementally added when one that isn't in it is queried for or generated. The website was made with SvelteKit using Typescript and the database queries are handled with Prisma.
 
 This is the first time I have used
 
 - CockroachDB
-- PostgreSQL (outside of university)
+- SQL (outside of university)
 - Prisma
 
 Prisma made it really easy to interface with the underlying database and prevented me from having to write potentially dangerous raw SQL.
