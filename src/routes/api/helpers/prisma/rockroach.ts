@@ -26,6 +26,15 @@ export async function rockroach(pokemon: string) {
 				}
 			});
 		}
+		if (!checkIfAlreadyIn) {
+			checkIfAlreadyIn = await prismatic.display.findFirst({
+				where: {
+					id: {
+						equals: Number(pokemon)
+					}
+				}
+			});
+		}
 		if (checkIfAlreadyIn) {
 			status = 200;
 			body = checkIfAlreadyIn;

@@ -26,6 +26,7 @@
 	:global(body) {
 		padding: 0;
 		margin: 0;
+		overflow-x: hidden;
 		background-color: aliceblue;
 		font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

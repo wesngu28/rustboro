@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Display {
-  id        Int       @id
+  id        Int      @id
   name      String
   art       String
   sprite    String
