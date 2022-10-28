@@ -3,7 +3,7 @@ A web app that displays Pokemon based on user search or generates six random pok
 
 Still a work in progress, some parts may feel unresponsive or slow.
 
-[It used to look like this though...](https://github.com/wesngu28/pokemon-stats-game/tree/main)
+[It used to look like this though...](https://wesngu28.github.io/pokemon-stats-game/) [hiding in the main branch](https://github.com/wesngu28/pokemon-stats-game/tree/main)
 
 # What I learned and used
 
