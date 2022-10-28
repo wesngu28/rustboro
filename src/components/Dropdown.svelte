@@ -40,7 +40,7 @@
 			Unova: [494, 650],
 			Kalos: [650, 722],
 			Alola: [722, 810],
-			Galar: [810, 899],
+			Galar: [810, 906],
 			Forms: [10001, 10250]
 		};
 		let value: Array<number> = [];

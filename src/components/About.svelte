@@ -9,6 +9,7 @@
         Svelte is a framework that I really like and enjoy using as it feels much more natural than using something
         like React (which I still like). The above slideshow are my six favorite pokemon.
     </p>
+    <p>Forms do not appear in the National Dex selection.</p>
     <p>Made with large credit to the PokeApi, Svelte, and SvelteKit. This does not have any affiliation with Nintendo, GameFreak,
         or the Pokemon Company.
     </p>

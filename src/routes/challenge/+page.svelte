@@ -5,6 +5,10 @@
 
 </script>
 
+<svelte:head>
+  <title>Stats Challenge</title>
+</svelte:head>
+
 <div class="wrapper">
 	<Header pokeBallWork={true} />
 	<Rustboro />

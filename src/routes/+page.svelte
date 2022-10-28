@@ -7,6 +7,10 @@
 
 </script>
 
+<svelte:head>
+  <title>Pokemon Stats Viewer</title>
+</svelte:head>
+
 <div class="wrapper">
 	<Header pokeBallWork={true} />
 	<Pokedex pokemon={$pokemonList} />
