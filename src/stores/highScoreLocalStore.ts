@@ -1,3 +1,3 @@
-import { writable } from 'svelte-local-storage-store'
+import { writable } from 'svelte-local-storage-store';
 
-export const highScore = writable('highScore', 0)
+export const highScore = writable('highScore', 0);

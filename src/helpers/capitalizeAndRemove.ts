@@ -1,18 +1,18 @@
-import { capitalize } from "./capitalize";
+import { capitalize } from './capitalize';
 
 export function capitalizeAndRemove(string: string) {
-    string = string.replace('-', ' ')
-    const stringArr = string.split(' ')
-    const capitalizedStringArr = stringArr.map(string => {
-        return capitalize(string)
-    });
-    return capitalizedStringArr.join(' ')
+	string = string.replace('-', ' ');
+	const stringArr = string.split(' ');
+	const capitalizedStringArr = stringArr.map((string) => {
+		return capitalize(string);
+	});
+	return capitalizedStringArr.join(' ');
 }
 
 export function capitalizeAndDontRemove(string: string) {
-    const stringArr = string.split(' ')
-    const capitalizedStringArr = stringArr.map(string => {
-        return capitalize(string)
-    });
-    return capitalizedStringArr.join(' ')
+	const stringArr = string.split(' ');
+	const capitalizedStringArr = stringArr.map((string) => {
+		return capitalize(string);
+	});
+	return capitalizedStringArr.join(' ');
 }

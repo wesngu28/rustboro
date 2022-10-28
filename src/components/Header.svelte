@@ -1,19 +1,29 @@
 <script lang="ts">
-	import Dropdown from "./Dropdown.svelte";
+	import Dropdown from './Dropdown.svelte';
 	let pokeBallClick: boolean = false;
 	export let pokeBallWork: boolean;
-	
+	import { onMount } from 'svelte';
+	let url = ``;
+	onMount(() => (url = window.location.href));
+
 	const flipBall = () => {
-		if(!pokeBallWork) return;
-		if (pokeBallClick) return pokeBallClick = false
-		return pokeBallClick = true
-	}
+		if (!pokeBallWork) return;
+		if (pokeBallClick) return (pokeBallClick = false);
+		return (pokeBallClick = true);
+	};
 </script>
 
 <header>
-	<a href="/"><img on:click={flipBall} alt="clickable pokeball button" src="headerBall.png"></a>
-	<Dropdown show={pokeBallClick} />
-	<a href="/challenge"><img alt="clickable stone badge" src="stoneBadge.png"></a>
+	{#if !url.includes('challenge')}
+		<a href="/challenge"><img alt="clickable stone badge" src="stoneBadge.png" /></a>
+		<img on:click={flipBall} alt="clickable pokeball button" src="headerBall.png" />
+		<Dropdown show={pokeBallClick} />
+		<a href="/challenge"><img alt="clickable stone badge" src="stoneBadge.png" /></a>
+	{:else}
+		<img alt="clickable pokeball button" src="headerBall.png" />
+		<Dropdown show={pokeBallClick} />
+		<a href="/"><img alt="clickable stone badge" src="stoneBadge.png" /></a>
+	{/if}
 </header>
 
 <style>

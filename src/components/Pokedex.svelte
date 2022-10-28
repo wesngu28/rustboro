@@ -22,7 +22,7 @@
 			idx = idx - 1;
 		}
 	};
-	
+
 	const nextPokemon = () => {
 		if (idx === pokemon.length - 1) {
 			idx = 0;
@@ -67,7 +67,8 @@
 											<span
 												><a
 													href={`https://www.smogon.com/dex/ss/abilities/${ability
-														.replace(' ', '-').replace('(H)', '')
+														.replace(' ', '-')
+														.replace('(H)', '')
 														.toLowerCase()}`}>{capitalizeAndRemove(ability)}</a
 												></span
 											>
@@ -137,7 +138,7 @@
 	div {
 		display: flex;
 	}
-	
+
 	.pokemon {
 		flex-direction: row;
 		width: 45vw;
@@ -207,7 +208,7 @@
 	.show {
 		display: flex;
 	}
-	
+
 	ul {
 		list-style: none;
 	}

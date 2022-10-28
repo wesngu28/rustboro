@@ -1,77 +1,88 @@
-.buttons, #personalpkmn {
-  display: flex;
-  padding: 15px;
+.buttons,
+#personalpkmn {
+	display: flex;
+	padding: 15px;
 }
 
 #personalpkmn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+	font-family: 'Inter', sans-serif;
 }
 
 h1 {
-  color: yellow;
-  text-shadow: 0 0 1px blue, 0 0 1px blue, 0 0 1px blue, 0 0 1px blue;
+	color: yellow;
+	text-shadow: 0 0 1px blue, 0 0 1px blue, 0 0 1px blue, 0 0 1px blue;
 }
 
-h1, p, figcaption {
-  text-align: center;
+h1,
+p,
+figcaption {
+	text-align: center;
 }
 
-#pokemon-table > img, button, figure > img {
-  margin-left: auto;
-  margin-right: auto;
+#pokemon-table > img,
+button,
+figure > img {
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#pokemon-table > img, #pokemon-table > p, .hidden {
-  display: none;
+#pokemon-table > img,
+#pokemon-table > p,
+.hidden {
+	display: none;
 }
 
-#dex, #pokemon-table > p, figcaption {
-  font-size: 18px;
+#dex,
+#pokemon-table > p,
+figcaption {
+	font-size: 18px;
 }
 
 #pokemon-table > img {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 #personalpkmn > figure > img {
-  width: 250px;
+	width: 250px;
 }
 
 #personal > button {
-  margin-top: 150px;
+	margin-top: 150px;
 }
 
 button {
-  display: block;
+	display: block;
 }
 
 .buttons {
-  flex-wrap: wrap;
-  justify-content: center;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 #pokemon-table {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
-.back, .next {
-  padding: 16px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: -25px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  background-color: black;
+.back,
+.next {
+	padding: 16px;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: -25px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	background-color: black;
 }
 
-.back:hover, .next:hover {
-  background-color: grey;
+.back:hover,
+.next:hover {
+	background-color: grey;
 }

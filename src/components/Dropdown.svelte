@@ -23,7 +23,6 @@
 				const pokemon = JSON.parse(usable);
 				pokemonList.update((list) => pokemon);
 				showAbout.update((show) => false);
-				console.log(pokemon);
 				pokemonList.update((str) => pokemon);
 				showAbout.update((show) => false);
 			}
