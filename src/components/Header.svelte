@@ -2,6 +2,9 @@
 	import Dropdown from "./Dropdown.svelte";
 	let pokeBallClick: boolean = false;
 	export let pokeBallWork: boolean;
+    import { onMount } from 'svelte';
+    let url = ``;
+    onMount(() => url = window.location.href);
 	
 	const flipBall = () => {
 		if(!pokeBallWork) return;
@@ -11,8 +14,15 @@
 </script>
 
 <header>
-	<img on:click={flipBall} alt="pokeball button" src="headerBall.png">
-	<Dropdown show={pokeBallClick} />
+	{#if !(url.includes('challenge'))}
+		<img on:click={flipBall} alt="clickable pokeball button" src="headerBall.png">
+		<Dropdown show={pokeBallClick} />
+		<a on:click={() => pokeBallWork = false} href="/challenge"><img alt="clickable stone badge" src="stoneBadge.png"></a>
+	{:else}
+		<img alt="clickable pokeball button" src="headerBall.png">
+		<Dropdown show={pokeBallClick} />
+		<a href="/"><img alt="clickable stone badge" src="stoneBadge.png"></a>
+	{/if}
 </header>
 
 <style>

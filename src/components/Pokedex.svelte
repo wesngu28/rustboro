@@ -21,7 +21,6 @@
 		} else {
 			idx = idx - 1;
 		}
-		console.log(idx);
 	};
 	
 	const nextPokemon = () => {

@@ -32,6 +32,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^4.5.0",
-		"pokenode-ts": "^1.17.0"
+		"pokenode-ts": "^1.17.0",
+		"svelte-local-storage-store": "^0.3.1"
 	}
 }
