@@ -37,7 +37,7 @@
 		const twoPokemon = JSON.parse(txt);
 		pokemon = [twoPokemon[0].name, twoPokemon[1].name];
 		sprite = [twoPokemon[0].sprite, twoPokemon[1].sprite];
-		if (randStats === 'BST') {
+		if (randStats === 'Base Stat Total') {
 			let pokemon1Stats: string[] = twoPokemon[0].stats.map((stat: string) => {
 				return stat.split(':')[1];
 			});
