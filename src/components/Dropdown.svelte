@@ -2,18 +2,17 @@
 	import { pokemonList, showAbout } from '../stores/stores';
 	export let show: boolean;
 	let search = '';
-	let regions = [
-		'National',
-		'Kanto',
-		'Johto',
-		'Hoenn',
-		'Sinnoh',
-		'Unova',
-		'Kalos',
-		'Alola',
-		'Galar',
-		'Forms'
-	];
+	const gens: { [key: string]: Array<number> } = {
+		Kanto: [1, 152],
+		Johto: [152, 252],
+		Hoenn: [252, 387],
+		Sinnoh: [387, 494],
+		Unova: [494, 650],
+		Kalos: [650, 722],
+		Alola: [722, 810],
+		Galar: [810, 906],
+		Forms: [10001, 10250]
+	};
 
 	const handleKeydown = async (event: KeyboardEvent) => {
 		if (search) {
@@ -24,24 +23,12 @@
 				pokemonList.update((list) => pokemon);
 				showAbout.update((show) => false);
 				pokemonList.update((str) => pokemon);
-				showAbout.update((show) => false);
 			}
 		}
 	};
 
 	async function prepareSixRandom(event: Event) {
 		const clickedRegion = (event.target as HTMLButtonElement).innerText;
-		const gens: { [key: string]: Array<number> } = {
-			Kanto: [1, 152],
-			Johto: [152, 252],
-			Hoenn: [252, 387],
-			Sinnoh: [387, 494],
-			Unova: [494, 650],
-			Kalos: [650, 722],
-			Alola: [722, 810],
-			Galar: [810, 906],
-			Forms: [10001, 10250]
-		};
 		let value: Array<number> = [];
 		if (Object.keys(gens).includes(clickedRegion)) {
 			value = gens[clickedRegion];
@@ -67,7 +54,7 @@
 	<input placeholder="Search a Pokemon" bind:value={search} />
 	<p>or choose a region for six random Pokemon</p>
 	<ul>
-		{#each regions as region, i}
+		{#each Object.keys(gens) as region, i}
 			<li>
 				<button on:click={(event) => prepareSixRandom(event)}>{region}</button>
 			</li>

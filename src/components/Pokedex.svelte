@@ -36,20 +36,26 @@
 {#if pokemon.length > 0}
 	<div class="slideshow">
 		{#if pokemon.length > 1}
-			<a on:click={previousPokemon} class="back">&#8592;</a>
+			<button on:click={previousPokemon} class="back">&#8592;</button>
 		{/if}
 		{#each pokemon as pkmn, i}
 			<div class="pokemon {i === idx ? 'show' : 'hidden'}">
 				<div class="nameArt">
 					<h1>{pkmn.name}</h1>
 					<h2>{pkmn.title}</h2>
-					<img src={pkmn.art} />
+					<img alt={`${pkmn.name} artwork`} src={pkmn.art} />
 					<p>{pkmn.blurb}</p>
 				</div>
 				<div class="info">
 					<div class="spriteability">
 						<div class="sprite-holder">
-							<img class="sprite" src={pkmn.sprite ? pkmn.sprite : 'headerBall.png'} />
+							<img
+								alt={pkmn.sprite
+									? `${pkmn.name} sprite`
+									: `filler pokeball because no sprite is provided`}
+								class="sprite"
+								src={pkmn.sprite ? pkmn.sprite : 'headerBall.png'}
+							/>
 						</div>
 						<div class="abilitydiv">
 							<div>
@@ -107,7 +113,7 @@
 			</div>
 		{/each}
 		{#if pokemon.length > 1}
-			<a on:click={nextPokemon} class="next">&#8594;</a>
+			<button on:click={nextPokemon} class="next">&#8594;</button>
 		{/if}
 	</div>
 {:else}
@@ -115,8 +121,10 @@
 {/if}
 
 <style scoped>
-	a {
+	button {
 		text-decoration: none;
+		background-color: white;
+		border: none;
 		color: darkblue;
 	}
 
@@ -142,7 +150,7 @@
 	.pokemon {
 		flex-direction: row;
 		width: 45vw;
-		background-color: ghostwhite;
+		background-color: lightslategray;
 		padding: 2rem;
 	}
 
@@ -170,10 +178,6 @@
 
 	.long {
 		width: 65%;
-	}
-
-	.stat {
-		background-color: aqua;
 	}
 
 	.abilitydiv {
