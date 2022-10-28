@@ -11,7 +11,7 @@
 	<Header pokeBallWork={true} />
 	<Pokedex pokemon={$pokemonList} />
 	<About show={$showAbout} />
-	<Footer />
+	<Footer button={true}/>
 </div>
 
 <style scoped>

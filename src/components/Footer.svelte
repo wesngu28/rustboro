@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { pokemonList, showAbout } from '../stores/stores';
+	export let button: boolean;
 	let unshow: boolean;
 
 	showAbout.subscribe((value: boolean) => {
@@ -21,7 +22,9 @@
 </script>
 
 <footer>
-	<button on:click={displayFavorite}>About</button>
+	{#if button}
+		<button on:click={displayFavorite}>About</button>
+	{/if}
 </footer>
 
 <style scoped>

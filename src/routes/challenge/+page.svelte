@@ -1,12 +1,14 @@
 <script lang="ts">
 	import Header from '../../components/Header.svelte';
 	import Footer from '../../components/Footer.svelte';
+	import Rustboro from '../../components/Rustboro.svelte';
 
 </script>
 
 <div class="wrapper">
 	<Header pokeBallWork={true} />
-	<Footer />
+	<Rustboro />
+	<Footer button={false}/>
 </div>
 
 <style scoped>
