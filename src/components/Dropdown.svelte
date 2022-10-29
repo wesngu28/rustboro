@@ -39,7 +39,7 @@
 			randStr += rand + ',';
 		}
 		randStr = randStr.slice(0, randStr.length - 1);
-		const response = await fetch(`/api/pokemon?pokemon=${randStr}`);
+		const response = await fetch(`/api/pokemon?pokemon=${randStr}&random=yes`);
 		const usable = await response.text();
 		const pokemon = JSON.parse(usable);
 		pokemonList.update((list) => pokemon);
@@ -98,13 +98,13 @@
 	}
 
 	li {
-		padding: 0.5rem;
 		border-radius: 2px;
 		background-color: salmon;
 		margin: 0.5rem;
 	}
 
 	button {
+		padding: 0.5rem;
 		border: none;
 		background-color: transparent;
 	}

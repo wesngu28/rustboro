@@ -3,12 +3,11 @@ import { capitalize } from '../../../../helpers/capitalize';
 import { fetchPokemonData } from '../fetchPokemonData';
 import { prismatic } from './primsa';
 
-export async function rockroach(pokemon: string) {
+export async function pheromosa(pokemon: string) {
 	if (!pokemon) {
 		throw Error;
 	}
 	let body = {} as Display;
-	let status = 500;
 	try {
 		let checkIfAlreadyIn = await prismatic.display.findFirst({
 			where: {
@@ -27,10 +26,8 @@ export async function rockroach(pokemon: string) {
 			});
 		}
 		if (checkIfAlreadyIn) {
-			status = 200;
 			body = checkIfAlreadyIn;
 			return {
-				status,
 				body
 			};
 		}
@@ -41,17 +38,14 @@ export async function rockroach(pokemon: string) {
 					...pokemonData
 				}
 			});
-			status = 200;
 			return {
-				status,
 				body
 			};
 		}
 	} catch (err: any) {
 		console.log(err.message);
-		status = 404;
 		return {
-			status
+			error: 'An error was encountered processing your request.'
 		};
 	}
 }
