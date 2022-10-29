@@ -4,11 +4,16 @@
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
+		"moduleResolution": "Node",
+		"module": "ESNext",
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true
+	},
+	"ts-node": {
+		"esm": true
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//

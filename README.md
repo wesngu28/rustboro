@@ -1,9 +1,15 @@
 # Pokemon Stats Viewer and Game
+
 A web app that displays Pokemon based on user search or generates six random pokemon.
 
 Still a work in progress, some parts may feel unresponsive or slow.
 
 [It used to look like this though...](https://wesngu28.github.io/pokemon-stats-game/) [hiding in the main branch](https://github.com/wesngu28/pokemon-stats-game/tree/main)
+
+<p align="center">
+  <img src="static/diggersby.png" />
+</p>
+
 
 # What I learned and used
 
