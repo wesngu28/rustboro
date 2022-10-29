@@ -13,7 +13,9 @@
 			showAbout.update((show) => false);
 		} else {
 			showAbout.update((show) => true);
-			const response = await fetch(`/api/pokemon?pokemon=${'94,471,382,282,609,169'}`);
+			const response = await fetch(
+				`/api/pokemon?pokemon=${'Gengar,Chandelure,Gardevoir,Kyogre,Glaceon,Crobat'}`
+			);
 			const usable = await response.text();
 			const pokemon = JSON.parse(usable);
 			pokemonList.update((list) => pokemon);

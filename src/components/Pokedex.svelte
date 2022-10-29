@@ -99,16 +99,22 @@
 							</tr>
 						{/each}
 					</table>
-					{#if pkmn.varieties.length > 0}
-						{#each pkmn.varieties as variety}
-							<p>{variety}</p>
-						{/each}
-					{/if}
-					{#if pkmn.evolution.length > 0}
-						{#each pkmn.evolution as evolution}
-							<p>{evolution}</p>
-						{/each}
-					{/if}
+					<div>
+						<div>
+							{#if pkmn.varieties.length > 0}
+								{#each pkmn.varieties as variety}
+									<p>{variety}</p>
+								{/each}
+							{/if}
+						</div>
+						<div>
+							{#if pkmn.evolution.length > 0}
+								{#each pkmn.evolution as evolution}
+									<p>{evolution}</p>
+								{/each}
+							{/if}
+						</div>
+					</div>
 				</div>
 			</div>
 		{/each}
@@ -139,8 +145,14 @@
 	.type {
 		margin: 0.5rem;
 		padding: 0.25rem;
-		background-color: beige;
+		background-color: darkslategray;
 		border-radius: 0.5rem;
+	}
+
+	@media screen and (prefers-color-scheme: light) {
+		.type {
+			background-color: beige;
+		}
 	}
 
 	div {
@@ -152,6 +164,7 @@
 		width: 45vw;
 		background-color: lightslategray;
 		padding: 2rem;
+		border-radius: 2rem;
 	}
 
 	.nameArt {
@@ -174,6 +187,7 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		flex-direction: column;
 		width: 100%;
+		color: black;
 	}
 
 	.long {

@@ -1,4 +1,4 @@
-import { getTwoRandoms } from '../helpers/prisma/rockroach';
+import { getTwoRandoms } from '../helpers/prisma/challenge';
 
 export async function GET() {
 	const pokemonArr = await getTwoRandoms();

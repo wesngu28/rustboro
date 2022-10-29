@@ -10,10 +10,10 @@
 		Unova: [494, 650],
 		Kalos: [650, 722],
 		Alola: [722, 810],
-		Galar: [810, 906],
-		Forms: [10001, 10250]
+		Galar: [810, 899],
+		Forms: [10001, 10248]
 	};
-
+	// For whatever reason, pokemon past 898 (calyrex) and form 10247 (basculin white-striped) do not work
 	const handleKeydown = async (event: KeyboardEvent) => {
 		if (search) {
 			if (event.key === 'Enter') {
@@ -22,7 +22,6 @@
 				const pokemon = JSON.parse(usable);
 				pokemonList.update((list) => pokemon);
 				showAbout.update((show) => false);
-				pokemonList.update((str) => pokemon);
 			}
 		}
 	};

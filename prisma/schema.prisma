@@ -8,7 +8,8 @@ datasource db {
 }
 
 model Display {
-  id        Int      @id
+  roachid   Int    @id @default(sequence(maxValue: 4294967295))
+  id        Int      
   name      String
   art       String
   sprite    String

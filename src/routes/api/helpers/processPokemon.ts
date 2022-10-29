@@ -44,14 +44,37 @@ export const processPokemon = async (
 	);
 	const findVarieties = species.varieties.filter((p) => p.is_default === false);
 	const usefulVariety = findVarieties.map((v) => {
-		return capitalizeAndRemove(v.pokemon.name);
+		const evoSprite = v.pokemon.url
+			.replace('https://pokeapi.co/api/v2/pokemon/', '')
+			.replace('/', '');
+		return `${capitalizeAndRemove(v.pokemon.name)},${
+			v.pokemon.url
+		},https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evoSprite}.png`;
 	});
 	let evolutions: string[] = [];
-	evolutions = [...evolutions, evolutionChain.chain.species.name];
+	const evoSprite = evolutionChain.chain.species.url
+		.replace('https://pokeapi.co/api/v2/pokemon-species/', '')
+		.replace('/', '');
+	evolutions = [
+		...evolutions,
+		`${evolutionChain.chain.species.name},${evolutionChain.chain.species.url.replace(
+			'-species',
+			''
+		)},https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evoSprite}.png`
+	];
 	const digDeeper = async (evolutionTree: ChainLink[]) => {
 		if (!evolutionTree[0]) return;
 		if (evolutionTree.length > 1) return;
-		evolutions = [...evolutions, evolutionTree[0].species.name];
+		const evoSprite = evolutionTree[0].species.url
+			.replace('https://pokeapi.co/api/v2/pokemon-species/', '')
+			.replace('/', '');
+		evolutions = [
+			...evolutions,
+			`${evolutionTree[0].species.name},${evolutionTree[0].species.url.replace(
+				'-species',
+				''
+			)},https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evoSprite}.png`
+		];
 		if (Object.keys(evolutionTree[0]).includes('evolves_to')) {
 			digDeeper(evolutionTree[0].evolves_to);
 		}
