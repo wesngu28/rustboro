@@ -71,7 +71,7 @@
 									{#each pkmn.abilities as ability}
 										<li>
 											<span
-												><a
+												><a target="_blank" rel="noreferrer"
 													href={`https://www.smogon.com/dex/ss/abilities/${ability
 														.replace(' ', '-')
 														.replace('(H)', '')
@@ -99,18 +99,18 @@
 							</tr>
 						{/each}
 					</table>
-					<div>
+					<div class="forms">
 						<div>
 							{#if pkmn.varieties.length > 0}
 								{#each pkmn.varieties as variety}
-									<p>{variety}</p>
+									<img title={variety.split(',')[0]} alt={variety.split(',')[0]} src={variety.split(',')[2]}>
 								{/each}
 							{/if}
 						</div>
 						<div>
 							{#if pkmn.evolution.length > 0}
 								{#each pkmn.evolution as evolution}
-									<p>{evolution}</p>
+									<img title={evolution.split(',')[0]} alt={evolution.split(',')[0]} src={evolution.split(',')[2]}>
 								{/each}
 							{/if}
 						</div>
@@ -127,6 +127,7 @@
 {/if}
 
 <style scoped>
+
 	button {
 		text-decoration: none;
 		background-color: white;
@@ -157,6 +158,11 @@
 
 	div {
 		display: flex;
+	}
+
+	.forms {
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.pokemon {
