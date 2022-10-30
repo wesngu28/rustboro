@@ -1,4 +1,4 @@
-# Pokemon Stats Viewer and Game
+# Rustboro Trainer School
 
 A web app that displays Pokemon based on user search or generates six random pokemon.
 
