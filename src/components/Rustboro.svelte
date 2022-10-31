@@ -81,6 +81,7 @@
 			info = `${pokemon[1]} has a ${randStats} value of ${stat[1]}, ${compare} ${pokemon[0]}'s ${stat[0]}.`;
 		} else {
 			if (stat[1] == stat[0]) {
+				status = 'correct';
 				answer = `You chose a draw which is right!`;
 				info = `${pokemon[0]} has a ${randStats} value of ${stat[1]}, ${compare} ${pokemon[1]}'s ${stat[0]}.`;
 			} else {
