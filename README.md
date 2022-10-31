@@ -4,10 +4,12 @@ A web app that displays Pokemon based on user search or generates six random pok
 
 Still a work in progress, some parts may feel unresponsive or slow.
 
-[It used to look like this though...](https://wesngu28.github.io/pokemon-stats-game/) [hiding in the main branch](https://github.com/wesngu28/pokemon-stats-game/tree/main)
+[It used to look like this...](https://wesngu28.github.io/pokemon-regional-randomizer/) [quite the change](https://github.com/wesngu28/pokemon-regional-randomizer)
+
 
 <p align="center">
   <img src="static/diggersby.png" alt="diggersby" />
+  <p align="center"> Diggersby Intermission</p>
 </p>
 
 
