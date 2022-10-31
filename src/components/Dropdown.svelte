@@ -65,7 +65,10 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div class={show ? 'visible' : 'hidden'}>
-	<input placeholder="Search a Pokemon, or click a button for six random Pokemon" bind:value={search} />
+	<input
+		placeholder="Search a Pokemon, or click a button for six random Pokemon"
+		bind:value={search}
+	/>
 	<ul>
 		{#each Object.keys(gens) as region, i}
 			<li>
@@ -119,7 +122,6 @@
 	}
 
 	@media (max-width: 820px) {
-		
 		div {
 			width: 100vw;
 		}

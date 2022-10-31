@@ -129,7 +129,9 @@
 		</div>
 		{#if status}
 			<div class="result">
-				<p>{answer} <span style="{status === 'wrong' ? 'color: red' : 'color: green'}">{status}</span>!</p>
+				<p>
+					{answer} <span style={status === 'wrong' ? 'color: red' : 'color: green'}>{status}</span>!
+				</p>
 				<p>{info}</p>
 				<button class="tertiary" on:click={() => challenge()}>New Set</button>
 			</div>

@@ -6,12 +6,10 @@ Still a work in progress, some parts may feel unresponsive or slow.
 
 [It used to look like this...](https://wesngu28.github.io/pokemon-regional-randomizer/) [quite the change](https://github.com/wesngu28/pokemon-regional-randomizer)
 
-
 <p align="center">
   <img src="static/diggersby.png" alt="diggersby" />
   <p align="center"> Diggersby Intermission</p>
 </p>
-
 
 # What I learned and used
 

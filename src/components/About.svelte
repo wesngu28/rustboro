@@ -15,19 +15,20 @@
 		<p>
 			This is a remake of my first ever real project using the HTML/CSS/Javascript stack, remade in
 			SvelteKit. Svelte is a framework that I really like and enjoy using as it feels much more
-			natural than using something like React (which I still like). All Pokemon are stored within a 
-			cockroachDB database, which is a kind of SQL database. I took a lot of inspiration for the stats 
-			that are displayed per Pokemon from Smogon, although the implementation is all my own. The Pokemon 
-			evolution's graphic may incorrectly show some lines
-			(as Pokemon may be missing). 
+			natural than using something like React (which I still like). All Pokemon are stored within a
+			cockroachDB database, which is a kind of SQL database. I took a lot of inspiration for the
+			stats that are displayed per Pokemon from Smogon, although the implementation is all my own.
+			The Pokemon evolution's graphic may incorrectly show some lines (as Pokemon may be missing).
 		</p>
 		<p>
-			The game pulls two random Pokemon from the database and randomly selects a stat. You must choose the
-			Pokemon that has the higher stat of the two, or have to accurately predict a draw (difficulty: impossible).
+			The game pulls two random Pokemon from the database and randomly selects a stat. You must
+			choose the Pokemon that has the higher stat of the two, or have to accurately predict a draw
+			(difficulty: impossible).
 		</p>
 		<p>
-			Made with large credit to the PokeApi (and the Pokenode-TS wrapper), CockroachDB, Svelte, and SvelteKit. This does not have any
-			affiliation with Nintendo, GameFreak, or the Pokemon Company.
+			Made with large credit to the PokeApi (and the Pokenode-TS wrapper), CockroachDB, Svelte, and
+			SvelteKit. This does not have any affiliation with Nintendo, GameFreak, or the Pokemon
+			Company.
 		</p>
 	</div>
 {/if}
