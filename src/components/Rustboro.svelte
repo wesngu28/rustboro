@@ -71,13 +71,13 @@
 			if (stat[0] > stat[1]) {
 				status = 'correct';
 			}
-			answer = `You chose ${pokemon[0]} which is ${status}!`;
+			answer = `You chose ${pokemon[0]} which is`;
 			info = `${pokemon[0]} has a ${randStats} value of ${stat[0]}, ${compare} ${pokemon[1]}'s ${stat[1]}.`;
 		} else if (selected === 2) {
 			if (stat[1] > stat[0]) {
 				status = 'correct';
 			}
-			answer = `You chose ${pokemon[1]} which is ${status}!`;
+			answer = `You chose ${pokemon[1]} which is`;
 			info = `${pokemon[1]} has a ${randStats} value of ${stat[1]}, ${compare} ${pokemon[0]}'s ${stat[0]}.`;
 		} else {
 			if (stat[1] == stat[0]) {
@@ -103,45 +103,56 @@
 </script>
 
 <div bind:this={wrapper}>
-	<div>
-		<h1>Rustboro City's Stat Guessing Challenge</h1>
+	<div class="top">
+		<h1>Rustboro City's Stat Challenge</h1>
 		{#if challengeStarted}
 			<button on:click={() => (challengeStarted = false)}>End Challenge</button>
 		{:else}
-			<img alt="test proctor Roxanne" src="/Roxanne.jpg" />
+			<img class="roxanne" alt="test proctor Roxanne" src="/Roxanne.jpg" />
 			<button on:click={(event) => challenge()}>Start Challenge</button>
 		{/if}
 	</div>
 	{#if challengeStarted}
-		<p>Which has the higher {randStats}?</p>
+		<p class="category">Which has the higher <span>{randStats}</span>?</p>
 		<div class="challenge">
-			<div>
+			<div class="pokemon">
 				<p>{pokemon[0]}</p>
 				<img alt={`sprite of ${pokemon[0]}`} src={sprite[0]} />
 				<button class="secondary" on:click={() => makeResult(1)}>Choose</button>
 			</div>
-			<div>
+			<button class="secondary" on:click={() => makeResult(3)}>Draw</button>
+			<div class="pokemon">
 				<p>{pokemon[1]}</p>
 				<img alt={`sprite of ${pokemon[1]}`} src={sprite[1]} />
 				<button class="secondary" on:click={() => makeResult(2)}>Choose</button>
 			</div>
 		</div>
-		<button class="secondary" on:click={() => makeResult(3)}>They're the same</button>
 		{#if status}
-			<p>{answer}</p>
-			<p>{info}</p>
-			<button class="tertiary" on:click={() => challenge()}>New Set</button>
+			<div class="result">
+				<p>{answer} <span style="{status === 'wrong' ? 'color: red' : 'color: green'}">{status}</span>!</p>
+				<p>{info}</p>
+				<button class="tertiary" on:click={() => challenge()}>New Set</button>
+			</div>
 		{/if}
 	{/if}
-	<p>🔥 Your current streak is {localScore} 🔥</p>
-	<p>💎 Your high score is {$highScore} 💎</p>
+	<div class="scores">
+		<p>🔥 Your current streak is {localScore} 🔥</p>
+		<p>💎 Your high score is {$highScore} 💎</p>
+	</div>
 </div>
 
 <style>
-	img {
-		max-width: 25vh;
-		height: auto;
+	span {
+		font-weight: bold;
 	}
+
+	.roxanne {
+		max-width: 35vh;
+		width: 75%;
+		height: auto;
+		padding: 1rem;
+	}
+
 	div {
 		display: flex;
 		flex-direction: column;
@@ -151,20 +162,39 @@
 		text-align: center;
 	}
 
+	.top {
+		padding-top: 0;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	.pokemon {
+		height: max-content;
+		width: 192px;
+	}
+
+	.pokemon > p {
+		font-size: 1.15rem;
+	}
+
+	.result > p {
+		font-size: 1.1rem;
+	}
+
+	.pokemon img {
+		max-width: 152px;
+		width: 200%;
+		max-height: 152px;
+		height: auto;
+		object-fit: contain;
+	}
+
 	.challenge {
 		flex-direction: row;
 		justify-content: space-around;
 		width: 50%;
-	}
-
-	p {
-		width: 50%;
-	}
-
-	@media (max-width: 960px) {
-		p {
-			width: 85%;
-		}
 	}
 
 	button {
@@ -172,6 +202,7 @@
 		padding: 1rem;
 		border-radius: 5%;
 		color: white;
+		font-size: 1.25rem;
 	}
 
 	.secondary {
@@ -187,6 +218,16 @@
 	.tertiary {
 		background-color: blue;
 		padding: 0.25rem;
+		margin: 1rem;
 		border-radius: 9999px;
+	}
+
+	.scores {
+		padding: 1rem;
+		font-size: 1.25rem;
+	}
+
+	.category {
+		font-size: 1.25rem;
 	}
 </style>
