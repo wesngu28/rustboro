@@ -71,7 +71,9 @@
 									{#each pkmn.abilities as ability}
 										<li>
 											<span
-												><a target="_blank" rel="noreferrer"
+												><a
+													target="_blank"
+													rel="noreferrer"
 													href={`https://www.smogon.com/dex/ss/abilities/${ability
 														.replace(' ', '-')
 														.replace('(H)', '')
@@ -103,15 +105,32 @@
 						<div>
 							{#if pkmn.varieties.length > 0}
 								{#each pkmn.varieties as variety}
-									<img title={variety.split(',')[0]} alt={variety.split(',')[0]} src={variety.split(',')[2]}>
+									<img
+										title={variety.split(',')[0]}
+										alt={variety.split(',')[0]}
+										src={variety.split(',')[2]}
+									/>
 								{/each}
 							{/if}
 						</div>
 						<div>
 							{#if pkmn.evolution.length > 0}
 								{#each pkmn.evolution as evolution}
-									<img title={evolution.split(',')[0]} alt={evolution.split(',')[0]} src={evolution.split(',')[2]}>
+									<img
+										title={evolution.split(',')[0]}
+										alt={evolution.split(',')[0]}
+										src={evolution.split(',')[2]}
+									/>
 								{/each}
+							{/if}
+							{#if pkmn.evolution.length == 1 && !pkmn.evolution[0].includes(pkmn.name)}
+								<img
+									alt={pkmn.sprite
+										? `${pkmn.name} sprite`
+										: `filler pokeball because no sprite is provided`}
+									class="sprite"
+									src={pkmn.sprite ? pkmn.sprite : 'headerBall.png'}
+								/>
 							{/if}
 						</div>
 					</div>
@@ -127,7 +146,6 @@
 {/if}
 
 <style scoped>
-
 	button {
 		text-decoration: none;
 		background-color: white;

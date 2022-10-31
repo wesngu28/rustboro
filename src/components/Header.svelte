@@ -3,7 +3,6 @@
 	let pokeBallClick: boolean = false;
 	export let pokeBallWork: boolean;
 	import { page } from '$app/stores';
-
 	const flipBall = () => {
 		if (!pokeBallWork) return;
 		if (pokeBallClick) return (pokeBallClick = false);

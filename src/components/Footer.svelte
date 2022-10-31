@@ -7,25 +7,19 @@
 		unshow = value;
 	});
 
-	async function displayFavorite() {
+	async function displayAbout() {
 		if (unshow) {
-			pokemonList.update((list) => []);
 			showAbout.update((show) => false);
 		} else {
+			pokemonList.update((list) => []);
 			showAbout.update((show) => true);
-			const response = await fetch(
-				`/api/pokemon?pokemon=${'Gengar,Chandelure,Gardevoir,Kyogre,Glaceon,Crobat'}`
-			);
-			const usable = await response.text();
-			const pokemon = JSON.parse(usable);
-			pokemonList.update((list) => pokemon);
 		}
 	}
 </script>
 
 <footer>
 	{#if button}
-		<button on:click={displayFavorite}>About</button>
+		<button on:click={displayAbout}>About</button>
 	{/if}
 </footer>
 
