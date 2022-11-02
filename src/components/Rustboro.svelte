@@ -81,19 +81,24 @@
 			info = `${pokemon[1]} has a ${randStats} value of ${stat[1]}, ${compare} ${pokemon[0]}'s ${stat[0]}.`;
 		} else {
 			if (stat[1] == stat[0]) {
-				status = 'correct';
-				answer = `You chose a draw which is right!`;
+				status = 'jackpot';
+				answer = `For correctly guessing a draw, you have received a 5 point`;
 				info = `${pokemon[0]} has a ${randStats} value of ${stat[1]}, ${compare} ${pokemon[1]}'s ${stat[0]}.`;
 			} else {
-				answer = `You chose a draw which is wrong!`;
+				answer = `You chose a draw which is`;
 				info = `${pokemon[0]} has a ${randStats} value of ${stat[1]}, ${compare} ${pokemon[1]}'s ${stat[0]}.`;
 			}
+		}
+		if (stat[1] === stat[0] && status === 'wrong') {
+			answer = 'It was a draw!' 
+			status = 'Free Pass'
 		}
 		const secondaryButtons = wrapper.querySelectorAll('.secondary');
 		secondaryButtons.forEach((button) => {
 			(button as HTMLButtonElement).disabled = true;
 		});
 		if (status === 'correct') localScore = localScore + 1;
+		if (status === 'jackpot') localScore = localScore + 5;
 		if (status === 'wrong') localScore = 0;
 		if (localHigh < localScore) {
 			localHigh = localScore;
@@ -130,7 +135,7 @@
 		{#if status}
 			<div class="result">
 				<p>
-					{answer} <span style={status === 'wrong' ? 'color: red' : 'color: green'}>{status}</span>!
+					{answer} <span style={status === 'jackpot' ? 'color: blue' : status === 'wrong' ? 'color: red' : status === 'Free Pass' ? 'color: gold' : 'color: green'}>{status}</span>!
 				</p>
 				<p>{info}</p>
 				<button class="tertiary" on:click={() => challenge()}>New Set</button>
